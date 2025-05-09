@@ -1,0 +1,113 @@
+Arrays:
+--> Collection of similar kind of data in a continous allocation.
+--> In c,c++, we have pointers so definately elements  will be stored in Continous format.
+--> In java,we dont have pointers then there is a chance of elements might be stored in non-continous format.
+
+Syntax:
+--> data_type[] array_name;
+
+primitive and Non-primitive:
+--> primitive data_types:cant be ,divided.eg:string,user_defined objects  
+--> non-primitive data_type:can be divided.eg:int,float
+
+Class Node{
+     int data;
+     node next;
+};
+--> All the objects will be stored in heap memory.
+--> All the references will be stored in stack memory.
+--> Stack memory have lesser space than heap.
+
+//Example
+class Main{
+public static void main(String[]args){
+  data_type[] array_name;
+  int a=10;
+  int b=20;
+  int c=30;
+  int[] arr={10,20,30};
+ }
+}
+--> Instead of creating multiple variables, create an array.
+--> Variables printed using variable_name.
+--> Arrays are printed using index values.
+--> Index values range:(0,n-1)
+
+
+class Main{
+  public static void main(String[]args){
+   int [] arr={1,2,3,4,5};//Declaration and initialization happened in same line
+   for (inti=0;i<arr.length;i++){
+     System.out.println(arr[0]);
+   }
+ }
+}
+
+Length
+--> For Array :array_name.length
+--> For String:string_name.length
+
+--> Camel case: arrayName
+--> Snake case: array_name
+
+--> In Java,Camel case is prefered for production-level code.
+--> Production-level Code for Addition of 2 Numbers:
+class Main{
+  public static void main(String[]args){
+   int [] arr={1,2,3,4,5};//Declaration and initialization happened in same line
+   for (inti=0;i<arr.length;i++){
+     System.out.println(arr[0]);
+   }
+   void additionOfTwoNumbers(int n1,int n2){
+   }
+  }
+ }
+}
+
+
+--> Printing Formats:
+--> 1.For-loop
+for(int i=0;i<arr.length;i++){
+ System.out.print(arr[i] + " ");
+}
+
+--> 2.For-each loop
+for (int i : arr){
+ System.out.print(i + " ");
+}
+//index value not needed
+
+--> 3.toString() Method {//Inbuilt-Method to print array //Accepts only 1 argument i.e.array}
+System.out.print(Array.toString(arr));
+
+--> Declaring the size of array,values initialization later.
+    int [] arr=new arr[5];
+    System.out.println(arr[3]);
+-->Array has fixed sized.
+   int [] arr = new int[5];
+-->int array,before reference was created using new keyword.
+-->actual objectwill be created in the heap memory.
+-->further particular data_type and size
+-->For Integer default values is 0.
+-->For String default values are Null.
+-->Null is literal.
+
+int []arr= new int[5];
+arr[0]=1;
+arr[1]=2;
+arr[2]=3;
+arr[3]=4;
+arr[4]=5;
+
+
+class Main{
+ public static vooid main(String[]args){
+  Scanner sc=new Scanner(System.in);
+  int []arr= new int[5];
+  System.out.println("Enter the Array Elements");
+  for (int i=0;i<arr.length;i++){
+    int arr[i]=sc.nextInt();
+  }
+  Systen.out.print(Array.toString(arr));
+ }
+}

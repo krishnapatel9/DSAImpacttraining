@@ -1,0 +1,73 @@
+//Tech Mahindra Coding Question
+Q:Next Greater Element
+For an Array:[6,8,0,1,3]
+The Output is:[8,-1,1,3,-1]
+Logic for loop in range of arraylength
+compare i,i+1 element
+
+Q:Meetings
+starttime
+
+Q:Maxprofit for prices of stock:
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        int[] prices={7,1,5,3,6,4};
+        int mini=prices[0];
+        int maxProfit=0;
+        int n=prices.length;
+        for(int i=1;i<n;i++){
+            int profit=prices[i]-mini;
+            maxProfit=Math.max(maxProfit,profit);
+            mini=Math.min(mini,prices[i]);
+        }
+        System.out.println(maxProfit);
+    }
+}
+
+Q:Leaders
+class Main {
+    public static void main(String[] args) {
+        int[] values = {7, 1, 5, 3, 6, 4};
+        int[] leader = new int[values.length];
+        int count = 0;
+        
+        int maxFromRight = values[values.length - 1];
+        leader[count++] = maxFromRight; // last element is always a leader
+        
+        for (int i = values.length - 2; i >= 0; i--) {
+            if (values[i] > maxFromRight) {
+                maxFromRight = values[i];
+                leader[count++] = maxFromRight;
+            }
+        }
+
+        // Leaders were added in reverse order, so print in reverse
+        for (int i = count - 1; i >= 0; i--) {
+            System.out.print(leader[i] + " ");
+        }
+    }
+}
+Q:Maximum sum of sub-array
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class Main {
+    public static void main(String[] args) {
+        int []arr={-2,1,-3,4,-1,2,1,-5,4};
+        int n=arr.length-1;
+        long maxi=Long.MIN_VALUE;
+        long sum=0;
+        for(int i =0;i<n;i++){
+            sum+=arr[i];
+            if(sum>maxi){
+                maxi=sum;
+            }
+            if(sum<0){
+                sum=0;
+            }
+    }
+  System.out.print(maxi);
+}
+}

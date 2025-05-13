@@ -1,0 +1,87 @@
+Q455:Leetcode
+import java.util.Arrays;
+class Solution {
+    public int findContentChildren(int[] g, int[] s) {
+        Arrays.sort(g); 
+        Arrays.sort(s); 
+        
+        int child = 0; 
+        int cookie = 0; 
+        
+        while (child < g.length && cookie < s.length) {
+            if (s[cookie] >= g[child]) {
+                child++;
+            }
+            cookie++;
+        }
+        
+        return child; 
+    }
+}
+Q:Lemonade change
+class Solution {
+    public boolean lemonadeChange(int[] bills) {
+        int five = 0, ten = 0;
+
+        for (int bill : bills) {
+            if (bill == 5) {
+                five++;
+            } else if (bill == 10) {
+                if (five == 0) return false;
+                five--;
+                ten++;
+            } else { // bill == 20
+                if (ten > 0 && five > 0) {
+                    ten--;
+                    five--;
+                } else if (five >= 3) {
+                    five -= 3;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+}
+Q:Jump Game
+class Solution {
+    public boolean canJump(int[] nums) {
+    int maxReach = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i > maxReach) return false; 
+            maxReach = Math.max(maxReach, i + nums[i]);
+        }
+        return true;
+    }}
+
+----//----Recursions----\\----
+-->Function calling itself repetedly it meets base condition.
+
+2 types of recursion:
+-->Function calling same function itself and itself
+-->Function calling another function itself and itself, till it meets base condition.
+
+-->if failure to mention base condition properly,will get an exception 'Stack Overflow'.
+-->Recursions are use to break the code.
+
+Q:Factorial using Recursion
+5!=5*4!
+4!=4*3!
+3!=3*2!
+2!=2*1!
+
+-->for every recursive call,elements will be pushed into a stack.
+-->after reaching base condition,elements will be poped.
+-->5,4,3,2,1 all these values will be pushed to a stack.
+
+fact(n){
+  if(n==0){
+    return 1;
+  }else{
+    return n*fact(n-1);
+}
+
+Q:Fibonacci Series
+fibonacci(n):

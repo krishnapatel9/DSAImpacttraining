@@ -85,3 +85,12 @@ fact(n){
 
 Q:Fibonacci Series
 fibonacci(n):
+
+
+-->-->>Q:Reverse an Array
+i=0,j=n;
+while (i<j){
+    Swap(arr[i],arr[j]);
+    i++;
+    j--;
+}

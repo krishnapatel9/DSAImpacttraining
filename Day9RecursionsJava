@@ -1,0 +1,51 @@
+Q:Remove a character from a string.
+"asdfghjkl"--->"asdfhjkl"(removed g)
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        String s="asdfghjkl";
+        String result=s.replace("g","");
+        System.out.println(result);
+}
+}
+
+
+//Now using Recursion
+-->Assume that we are beginning with 2 strings(input,output)
+-->Initially output string is empty
+-->We have few steps,those are:
+Steps
+-->Take first char of string and store in variable
+-->Check the variable with our target character
+-->If it matches,return output string
+-->else append the character to the output string
+-->slice the string by 1 character
+-->charAt():Slice the string
+  i/p                  o/p
+"Hello"                " "
+"ello"                 "H"
+"llo"                  "H"
+"lo"                   "Hl"
+"o"                    "Hll"
+" "                    "Hllo"
+
+-->Terminate recursion when i/p string is emptied.
+import java.util.*;
+class Main {    
+    static String skip(String ip){
+        if(ip.isEmpty()){
+            return "";
+        }
+        char ch=ip.charAt(0);
+        if(ch=='e'){
+            return skip(ip.substring(1));
+        }
+        else{
+            return ch+skip(ip.substring(1));
+        }
+    }
+    public static void main(String[] args) {
+        String ip="Hello";
+        System.out.println(skip(ip));
+}
+}

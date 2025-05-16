@@ -1,0 +1,34 @@
+STRINGS
+-->Strings are classes and arrays are objects .
+-->A sequence of characters is called strings.
+-->Strings are immutable.
+-->All the array objects will be created in heap memory but strings are created inside heap memory in "string pool".
+-->Once a string is created it will be created it will be created permanently it means we can't modify the string .
+
+
+Example:
+	String a = "Hello";
+        String b = "Hello";
+	System.out.print(a == b); // prints true as both a and b are pointing on same location of the data which is stored in heap memory.
+But ,
+
+	String a = new String("Hello");
+        String b = new String("Hello");
+	System.out.print(a == b); // prints false because both are different objects pointing on different locations.
+ 
+- " == " is used to compare address allocations. And equals() method is used to compare data not the address.
+ 	eg.  
+		System.out.print(a.equals(b));  // prints true in both of the above case as it compares the data.
+
+Q. Reverse an array of integers.
+To get array length we have to use "arr.length".For string's length we use "str.length()". In arr, length is field but in strings the length() is a method which returns a number of character.
+
+Q. Convert a string to an array and then do reverse.
+
+
+SUBSET - For a given array ,we have to print all possible arrays which should be in a sequence but not continuous. Thats called subset and in an array if we have n number of elements we will get 2^n subsets.
+
+BACKTRACKING- It is an example of recursion
+ - In recursion we have only two possibilities either " if " or "else"  and in backtracking we have multiple possibilities .
+ - Most of the problems whenever we reach basecase, we have to print all the base case elements .
+ - Remove last element in every recursive call. 

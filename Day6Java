@@ -1,0 +1,270 @@
+Day-6:
+------
+2D Arrays:
+----------
+2D Array , two dimentional Array. Consists of rows and Columns.
+
+        int[][] arr = new int[3][2];
+				rows columns
+
+very 1st square brackets [] represents rows and 2nd square brackets [] represents columns.
+
+while declearing the array, we have to declear no.Of rows.
+Each row will act asa individual Array.[].
+
+Size : Maximum Capacity of Array.
+Length : Actuall capacity of Array.
+
+
+code :
+------
+
+without taking rows and columns by user:
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter rows and Columns : ");
+        int[][] arr = new int[3][2];
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[i].length;j++){
+                arr[i][j] = in.nextInt();
+            }
+        }
+        System.out.println("Here are two dimentional Array : ");
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[i].length;j++){
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+}
+output:
+Enter rows and Columns : 
+1 2
+2 3
+4 5
+Here are two dimentional Array : 
+1 2 
+2 3 
+4 5 
+
+
+* taking rows and columns by user.
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter No Of rows : ");
+        int rows = in.nextInt();
+        System.out.println("Enter no Of columns : ");
+        int columns = in.nextInt();
+        System.out.println("Enter rows and Columns : ");
+        int[][] arr = new int[rows][columns];
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<columns;j++){
+                arr[i][j] = in.nextInt();
+            }
+        }
+        System.out.println("Here are two dimentional Array : ");
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<columns;j++){
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+}
+output :
+-------
+Enter No Of rows : 
+2
+Enter no Of columns : 
+3
+Enter rows and Columns : 
+1 2 3
+3 2 1
+Here are two dimentional Array : 
+1 2 3 
+3 2 1 
+
+
+
+* Swaping two elemensts without using third variable.
+
+public class swappingTwoVariables {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 20;
+        System.out.println(a+ " "+b);
+        System.out.println("After swaping :");
+        a = a+b;
+        b = a-b ;
+        a = a- b;
+        System.out.println(a +" " +b);
+    }
+}
+
+* given array we have elemenets only ones and zeros move all zeros to left side. without using second Array. [1,0,0,1,0,1,1,1,0,0]
+
+ - one way moves all zeroes to starting and making remaining all are 1's.
+import java.util.*;
+public class AllOnesToEnd {
+    static void moveAllZeroesToEnd(int[] arr){
+        int n = arr.length;
+        int index = 0;
+        for(int i=0;i<n;i++){
+            if(arr[i] == 0){
+                arr[index++] = 0;
+            }
+        }
+        while(index < n){
+            arr[index++] = 1;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+    public static void main(String[] args) {
+        int[] arr = {1,0,1,1,0,0,1,0,0,0,1,1,1,0,0};
+        System.out.println(Arrays.toString(arr));
+        moveAllZeroesToEnd(arr);
+    }
+}
+
+- second way swaping each elements if it is in wrong place.
+import java.util.*;
+public class AllOnesToEnd {
+    static void moveAllZeroesToEnd(int[] arr){
+        int i = 0;
+        int j = arr.length-1;
+        while(i<j){
+            if(arr[i]==1 && arr[j] == 0){
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                i++;
+                j--;
+            }else if(arr[1]==0){
+                i++;
+            }else if(arr[j]==1){
+                j--;
+            }
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+    public static void main(String[] args) {
+        int[] arr = {1,0,1,1,0,0,1,0,0,0,1,1,1,0,0};
+        System.out.println(Arrays.toString(arr));
+        moveAllZeroesToEnd(arr);
+    }
+}
+
+
+
+
+* sumOfZigZagElement.
+
+code :
+------
+
+public class ZigZagElementsSum {
+    public static void main(String[] args) {
+        int[][] arr= {
+                {1,2,3},
+                {4,5,6},
+                {7,8,9}
+        };
+        int sum =0;
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                if(i+j==arr.length-1 || i==0 || i==arr.length-1){
+                    sum = sum + arr[i][j];
+                }
+            }
+        }
+        System.out.println(sum);
+    }
+}
+
+
+* finding Missing Elemenst in sorted Array.
+code:
+------
+public class MissingNumberInSortedArray {
+    public static void main(String[] args) {
+        int[] arr = {1,2,4,5,6,7,8,9,10};
+        int missingNum = 0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]+1!=arr[i+1]){
+                missingNum = arr[i]+1;
+                break;
+            }
+        }
+
+        System.out.println(missingNum);
+    }
+}
+
+
+* maximum Consecutive Ones.
+code:
+----
+import java.util.*;
+public class MaximumConsecutiveOnes {
+    public static void main(String[] args) {
+        int[] arr = {1,0,1,0,1,1,1,1,0,1,1};
+        int maxNumbers = 0;
+        int count = 0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i] == 0){
+                count =0;
+            }else{
+                count+=1;
+                maxNumbers = Math.max(count,maxNumbers);
+            }
+        }
+        System.out.println(maxNumbers);
+    }
+}
+
+
+Task * :
+------
+
+1 2 3 		7 4 1
+4 5 6  => 	8 5 2
+7 8 9		9 6 3
+
+transpose.
+
+code:
+----
+
+public class RightAngleRotateofMatrix {
+    public static void main(String[] args) {
+        int[][] arr = {{1,2,3},{4,5,6},{7,8,9}};
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
+        }
+//        System.out.println("Transpose : ");
+//        for (int i = 0; i < arr.length; i++) {
+//            for (int j = 0; j < arr[i].length; j++) {
+//                System.out.print(arr[j][i] + " ");
+//            }
+//            System.out.println();
+//        }
+//        System.out.println("Reverse : ");
+
+        System.out.println("After Doing 90deg's : ");
+        for(int i=0;i<arr.length;i++){
+            for(int j=arr[i].length-1;j>=0;j--){
+                System.out.print(arr[j][i]+" ");
+            }
+            System.out.println();
+        }
+    }
+}

@@ -1,0 +1,116 @@
+SubArray,SubSet,SubSequence,SubString
+String="abc"
+SubArray           SubSet           SubSequence              SubString
+[1,2] +            [1,2] +              ab +                    ab +
+[1,3] -            [1,3] +              bc +                    bc +
+[2,3] +            [2,1] -              ac +                    ac -
+[3,2] -            [2,3] +              ca -                    ca -
+
+Subarray: Contiguous portion of an array.
+Subset: Any combination of elements from a set (order doesn't matter).
+Subsequence: Elements selected in the same order, but not necessarily contiguous.
+Substring: A contiguous portion of a string.
+
+
+counter for array.
+left,right pointers for strings.
+
+
+String:"abcabcdb"
+step1:initialize r,l pointer at index 0.
+step2:create a set 
+step3:check r characters in set,if not present push r char in set and increase r.
+step4:if present ,remove l character and move l.
+step5:find length:r-l+1, update max
+
+class Main {
+    public static void main(String[] args) {
+        HashSet<Character> set=new HashSet<>();
+        int left=0,maxLength=0;
+        
+        for(int right=0;right<s.length();right++){
+            char current=s.charAt(right);
+            
+            while(set.contains(current)){
+                set.remove (s.charAt(left));
+                left++;
+            }
+            set.add(current);
+            maxLength=Math.max(maxLength,right-left+1);
+        }
+        return maxLength;
+    }
+}
+
+📌 What is Sliding Window?
+-->The sliding window is a technique used to reduce the time complexity of problems involving arrays or strings,
+especially those that require examining subarrays or substrings.
+
+-->Instead of checking all possible subarrays (which is often O(n²)), 
+you "slide" a window over the array and keep track of relevant information in O(n) time.
+
+
+
+🪟 Key Idea:
+-->Use two pointers (left and right) to represent a window (subarray) that moves (or "slides") across the array.
+-->You adjust the window size dynamically:
+-->Expand the window by moving right to include more elements.
+-->Shrink the window by moving left to exclude elements.
+-->You maintain some condition (e.g., the number of zeroes, the sum, distinct characters, etc.) while doing so.
+
+
+✅ When to Use:
+-->You need to find the longest/shortest subarray that satisfies a condition.
+-->You are dealing with consecutive elements in an array or string.
+-->You want to reduce brute-force O(n²) to a more efficient O(n) or O(n log n).
+
+
+Q:1004
+class Solution {
+    public int longestOnes(int[] nums, int k) {
+         int l=0,r=0,maxLength=0,zeroCount=0;
+        for(r=0;r<nums.length;r++){
+            if(nums[r]==0){
+                zeroCount++;
+            }
+            while(zeroCount>k){
+                if(nums[l]==0){
+                    zeroCount--;
+                }
+                l++;
+            }
+            maxLength=Math.max(maxLength,r-l+1);
+        }
+        return maxLength;
+    }}
+
+
+
+GREEDY ALGORITHM:
+N-meetings in a room
+Job scheduling
+0/1 Knapsack
+
+Q2440:
+eg:1
+input:n=4,jobs={(1,4,20),(2,1,10),(3,1,40),(4,1,30)}
+o/p:2 60
+
+explanation:The 3 rd job with a deadline 1 is performed during the first unit of time.
+first job is the second unit of tme as its deadline is 4.
+profiit=40+20=60
+
+
+Given:
+start time = {1,3,0,5,8,5}
+end   time = {2,4,5,7,9,9}
+Create a mapping like {(1,2),(3,4),(0,5),(5,7),(8,9),(5,9)}
+perform custom sorting ,here w.r.t end time
+if end time (current meet) < start time(next meet),then consider the meet and increase the counter variable.
+
+
+
+for 0,1 knapsack problem
+making triplets
+sorting acc per kg
+getting quantity

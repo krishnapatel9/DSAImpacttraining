@@ -124,5 +124,8 @@ class Main {
         System.out.println(res);  // Output should be 0
     }
 }
-
+auxiliary index:An auxiliary index is an additional index or data structure used to 
+help or optimize searching, sorting, or accessing elements in a primary data structure (like an array, list, or database table).
 FInd the lower ,upper bound of an element.
+
+occurence 

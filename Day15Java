@@ -1,0 +1,66 @@
+q930
+
+import java.util.*;
+class Main {
+    public static intc lowerBound(int[]arr,int key){
+        int left=0,right=arr.length;
+        while(left<right){
+            int mid=left+(right-left)/2;
+            if(arr[mid]<key){
+                left=mid+1;
+            }
+            else{
+                right=mid;
+            }
+        }
+        return left;
+    }
+    public static intc upperBound(int[]arr,int key){
+        int left=0,right=arr.length;
+        while(left<right){
+            int mid=left+(right-left)/2;
+            if(arr[mid]<=key){
+                left=mid+1;
+            }
+            else{
+                right=mid;
+            }
+        }
+        return left-1;
+    }
+    
+    
+    public static void main(String[] args) {
+        
+    }
+}
+
+Q:minimum value in rotated sorted array 153
+import java.util.*;
+class Main {
+    public static int upperBound(int[]arr){
+        int left=0,right=arr.length-1;
+        int min=INTEGER.MAX_VALUE;
+        
+        int mid=left+(right-left)/2;
+        
+        if(arr[left]<=arr[right]){
+            min=Math.min(min,arr[left]);
+        }
+        
+        if(arr[mid]<arr[left]){
+            min=Math.min(min,arr[left]);
+            left=mid+1;
+        }
+        
+        else{
+            right=min-1;
+            min=Math.min(min,arr[mid]);
+        }
+    }
+    
+    public static void main(String[] args) {
+        
+    }
+}
+Q:1752

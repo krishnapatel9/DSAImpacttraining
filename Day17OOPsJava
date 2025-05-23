@@ -1,0 +1,28 @@
+Q:Maximum product of SubArray Elements:
+arr: [2,3,-6,4]
+initialize product=1.
+In the subarray,If we have even positive numbers then product will be positive.
+If we have odd negative numbers then product will be negative.
+In the subarray if we have atleast a 0,start product variable with 1.
+If we have negative value,the product of prefix elements will be positive and of suffix elements will be negative.
+
+[2,3,-6,4,0,5,2,3,-1,0,7,8,9,-3]
+pre=1 suf=1 max=infinity.
+
+ public static int maxProductSubArray(int[]arr){
+       int n=arr.length;
+       int pre=1,suff=1;
+       int ans=Integer.MIN_VALUE;
+       for(int i=0;i<n;i++){
+           if(pre==0) pre=1;
+           if(suff==0) suff=1;
+           pre*= arr[i];
+           suff*= arr[n-i-1];
+           ans=Math.max(ans,Math.max(pre,suff));
+       }
+       return ans;
+        }
+
+q4,88,15,56,229 leetcode.
+Q:875 Leetcode
+Q:1358 Leetcode

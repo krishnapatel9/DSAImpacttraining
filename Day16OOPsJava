@@ -23,6 +23,4 @@ pre=1 suf=1 max=infinity.
        return ans;
         }
 
-q4,88,15,56,229 leetcode.
-Q:875 Leetcode
-Q:1358 Leetcode
+Q:4,88,15,56,229,875,1358,424,162,1011

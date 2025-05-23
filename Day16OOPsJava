@@ -24,3 +24,71 @@ pre=1 suf=1 max=infinity.
         }
 
 Q:4,88,15,56,229,875,1358,424,162,1011
+
+Q:162
+class Solution {
+    public int findPeakElement(int[] nums) {
+        int l=0;
+        int r=nums.length-1;
+        while(l<r){
+            int mid=l+(r-l)/2;
+            if(nums[mid]<nums[mid+1]){
+                l=mid+1;
+            }
+            else{
+                r=mid;
+            }}
+            return r;
+        
+    }
+}
+
+
+Q:875 KokoEatingBananas
+1.Check the elemenst till max
+2.loop index 0 - max
+3.initialize left = 0,right = max
+4.get the middle value 
+5.divide array elements
+6.get the ceil values
+7.add all those ceil values 
+8.compare with target hours
+9.if its <= eliminate right half
+10.change right to mid-1
+11.if the sum > target hour ,eliminate left half
+12.change left =mid+1
+13.return left
+
+
+Object oriented programming:
+Abstracttion,Inheritance ,Polymorphism,Encapsulation
+and to achieve those properties,the prerequisite are class,object,constructor,interface.
+class:virtual entity and blueprint of object
+object:instance of class ,method calling in class 
+constructor:initializing the object (Default-for every class,Parameterized)
+
+Inheritance:
+From Class , inherit properties using keyword:extend
+4 types(single,multiple,multilevel,heiarchical)
+single : (Base) Parent (1) ----> (Derived) Child
+multilevel: 3 Levels Grandparent (Base)----> Parent (Base as well as Child) ----> Child (Derived)
+multiple : (Base) Parent (>1) ----> (Derived) Child
+heirachical : Parent (Base) ----> (Derived) Child (>1)
+
+Polymorphism : Same Method with multiple Parameters.
+From Interfaces , inherit properties using keyword:implement
+2 types : 
+Method Overloading ( A class with same method_name with different parameters ), 
+Method Overriding ( declaring same method( method_name , parameters) in child and parent ).
+
+-------->>>>>>>Main can be overriding with different parameters.<<<<<<<--------
+
+Encapsulation : Binding Method and Data along with hiding sensitive data.
+For private variables,we can't access outside the class,further using methods can access.
+
+Abstraction : Showing essential details.
+4 types : Data Abstraction,Functional Abstraction,Procedural Abstraction,Control Abstraction
+Method Abstraction using keyword abstract
+Class containing abstract(incomplete) method must be abstract.
+
+Interface : Contains all Abstract Methods and no object.

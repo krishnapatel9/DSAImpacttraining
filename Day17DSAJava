@@ -1,0 +1,80 @@
+import java.util.*;
+class A{
+    static void method1(){
+        System.out.println("Hello");
+    }
+    int method2(int a,int b){
+        return a+b;
+    }
+}
+class B extends A{
+    int method3(int a,int b){
+        return a-b;
+    }
+    
+}
+class Main {
+    public static void main(String[] args) {
+        A obj1=new A();
+        B obj2=new B();
+        A.method1();
+        int res=obj1.method2(5,6);
+        System.out.println(res);
+    }
+}
+
+
+if class c extends a,b (have same method) ,when object created and method_name is called
+then ambiguity will occur so multiple inheritance is not allowed.
+import java.util.*;
+class A{
+    void method1(){
+        System.out.println("Hello");
+    }
+}
+class B extends A{
+    
+}
+class C extends A{
+    
+}
+class Main {
+    public static void main(String[] args) {
+      B obj2 =new B();
+      C obj3 =new C();
+      obj2.method1();
+      obj3.method1();
+    }
+}
+
+
+
+polymorphism: overloading, overriding
+import java.util.*;
+class A{
+    int method1(int a,int b){
+        return a+b;
+    }
+    int method1(int a,int b,int c){
+        return a+b+c;
+    }
+}
+
+class B extends A{
+    int method1(int a,int b){
+        return a-b;
+    }
+}
+
+                            Public            Private             Protected              Default
+Within the  class             +                 +                    +                      +
+Within the file               +                 -                    +                      + 
+Within the package            +                 -                    +                      +  
+Outside the package           +                 -                    +                      -
+Parent class                  +                 -                    -                      -
+Child class                   +                 -                    +                      -  
+
+
+Package,Method,File,Class,Statements
+A folder_name acts as package_name
+A file_name acts as class_name

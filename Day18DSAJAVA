@@ -1,0 +1,49 @@
+--> Data Structures : Arrays, Stack, Queue, Linked List, Trees, Graph
+--> Algorithm :  Sorting , Searching, Dynamic Programming, Greedy 
+
+--------> Time Complexity <--------
+--> Ignore smaller values, constants
+--> Focus on worst case
+
+Example: 1 nested loop(With Time complexity n^2) and another single loop(n) further with 1
+Total: n^2+n+1
+Final Time Complexity = O(n^2)
+
+--> Best Case: least time taken 
+--> Worst Case O(): maximum time taken
+--> Average Case : within least and most time taken
+
+--------> Space Complexity <--------
+--> Using extra space in the code is space complexity
+
+
+Linear : Linked List, Stack, Queue
+Non - Linear : Trees, Graphs, Heaps
+
+/// Linked List ///
+Collection of similar type of data in random allocation.
+Stores Data, Address
+Perks : Faster Insertion, Deletion
+Single : In 1 direction 
+Double : Bi-directional 
+Circular : Same Head and Tail 
+
+// Structure of Linked List
+class Node{
+    int data;
+    Node next;
+}
+
+// Single,Last Node                                 // In-between Node
+ Node(int data1){                                    Node(int data1, Node next1){
+     this.data = data1;                                     this.data = data1;
+     this.next = null;                                      this.next = next1;
+}                                                   }      
+
+if we want to create an object , call the constructor it will provide output in the following forms :
+1.the node must be created with data and address null.
+for that we need to create a constructor,which helps to create node with data and address null.
+2.the node must be created with data and address of next node.
+for that we need to create a constructor,which helps to create node with data and address of next node.
+
+

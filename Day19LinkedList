@@ -1,0 +1,311 @@
+// Insert and Delete Operation in Linked List
+
+------Delete Operation-------                            
+--> head node
+--> tail node
+--> nth node
+--> by value
+
+------Insert Operation-------
+--> head node
+--> tail node
+--> nth node
+--> by value
+
+NullPointerException
+2 main info defined : data (null / value) , address(next) 
+3 pointers initially used : head, tail, temp
+for optimal approach , intorduce another pointer : prev (here)
+
+import java.util.*;
+class Node{
+    int data;
+    Node next;
+    
+    Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+    
+    static Node deleteHead(){
+        //Move head pointer to next node
+        
+    }
+    
+    static Node deleteTail(Node head){
+        //Traverse to the n-1 node and set next = null
+        Node temp=head;
+        while(temp.next.next!=null){
+            temp=temp.next;
+        }
+        temp.next=null;
+        return head;
+    }
+    
+    static Node deleteNthNode(Node head,int n){
+        Node temp = head;
+        Node prev = null;
+        int count = 1;
+        
+        while(temp!=null){
+            if(count==n){
+                prev.next=temp.next;
+                temp.next=null;
+            }
+            prev=temp
+            temp=temp.next;
+            count++;
+        }
+        return head;
+    }
+    
+    static Node deleteByValue(Node head, int value){
+        Node temp = head;
+        Node prev = null;
+        int count = 1;
+        
+        while(temp.data=value){
+            if(count==n){
+                prev.next=temp.next;
+                temp.next=null;
+            }
+            prev=temp
+            temp=temp.next;
+            count++;
+        }
+        return head;
+}
+
+//Insertion
+import java.util.*;
+class Node{
+    int data;
+    Node next;
+    
+    Node(int data){
+        this.data=data;
+        this.next=null;
+    }
+}
+class Main{
+    static Node insertAtHead(Node head, int value){
+    //Create a node
+    Node newNode = new Node(value);
+    newNode.next=head;
+    head=newNode;
+    
+    return head;
+    }
+    
+    static Node insertAtTail(Node head, int value){
+    Node temp=head;
+    Node newNode=new Node(value);
+    
+    while(temp.next!=null){
+        temmp.temp.next;
+    }
+    temp.next=newNode;
+    return head;
+    }
+    
+    
+}
+Q:237
+class Solution {
+    public void deleteNode(ListNode node) {
+        ListNode prev = null;
+        while(node!=null && node.next!=null){
+            node.val = node.next.val;
+            prev = node;
+            node = node.next;
+        }
+        if(node != null){//Means list is not empty
+            if(prev != null) prev.next = null;
+            else node = null;//Means list has only one node
+        }
+    }
+}
+
+Q:876
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        ListNode slow_pointer = head;
+        ListNode fast_pointer = head;
+
+        while (fast_pointer!=null && fast_pointer.next!=null){
+            slow_pointer = slow_pointer.next;
+            fast_pointer = fast_pointer.next.next;
+        }
+        return slow_pointer;
+    }
+}
+
+Q:2095
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteMiddle(ListNode head) {
+        ListNode slow_pointer = head;
+        ListNode fast_pointer = head;
+        ListNode prev=null;
+
+        if(head == null || head.next == null){
+			return null;
+		}
+
+        while (fast_pointer!=null && fast_pointer.next!=null){
+            prev=slow_pointer;
+            slow_pointer = slow_pointer.next;
+            fast_pointer = fast_pointer.next.next;
+        }
+        prev.next = slow_pointer.next;
+        return head;
+
+    }}
+
+
+
+
+class Node{
+    int data;
+    Node next;
+    
+    Node(int data1){
+        this.data= data1;
+        this.next = null;
+    }
+    Node(int data1,Node next1){
+        this.data = data1;
+        this.next = next1;
+    }
+}
+class Main {
+    static Node convertArrayToLinkedlist(int[] arr){
+        Node head = new Node(arr[0]);
+        Node current = head;
+        for(int i =1;i<arr.length;i++){
+            Node temp = new Node(arr[i]);
+            current.next = temp;
+            current = temp;
+        }
+        return head;
+    }
+    
+    static Node deleteHead(Node head){
+        Node temp = head;
+        head = temp.next;
+        
+        return head;
+    }
+    static Node deleteTail(Node head){
+        Node temp = head;
+        while(temp.next.next!=null){
+            temp = temp.next;
+        }
+        temp.next = null;
+        
+        return head;
+    }
+    static Node deleteNthNode(Node head,int n){
+        Node temp = head;
+        Node prev = null;
+        int c = 1;
+        
+        while(temp!=null){
+            if(c==n){
+                prev.next = temp.next;
+                temp.next = null;
+            }
+            prev = temp;
+            temp= temp.next;
+            c++;
+        }
+        return head;
+    }
+    static Node deleteByValue(Node head,int val){
+        Node temp = head;
+        Node prev = null;
+        
+        while(temp!=null){
+            if(temp.data == val){
+                prev.next = temp.next;
+                temp.next = null;
+            }
+            prev = temp;
+            temp= temp.next;
+        }
+        return head;
+        
+    }
+    static Node insertAtHead(Node head,int val){
+        Node newNode = new Node(val);
+        newNode.next = head;
+        head = newNode;
+        return head;
+    }
+    static Node insertAtTail(Node head,int val){
+        Node temp = head;
+        Node newNode = new Node(val);
+        while(temp.next!=null){
+            temp = temp.next;
+        }
+        temp.next = newNode;
+        return head;
+    }
+    static Node insertAtNthNode(Node head,int n,int val){
+        Node temp = head;
+        Node prev = null;
+        int c = 1;
+        
+        while(temp!=null){
+            Node newNode = new Node(val);
+            
+            if(c == n){
+                newNode.next = temp;
+                prev.next = newNode;
+            }
+            prev = temp;
+            temp = temp.next;
+            c++;
+        }
+        return head;
+    }
+    
+    static Node insertByValue(Node head,int ele,int val){
+        Node temp = head;
+        Node prev = null;
+        
+        while(temp!=null){
+            Node newNode = new Node(val);
+            
+            if(temp.data == ele){
+                newNode.next = temp;
+                prev.next = newNode;
+            }
+            prev = temp;
+            temp = temp.next;
+        }
+        return head;
+    }
+    static void print(Node head){
+        Node temp = head;
+        while(temp!=null){
+            System.out.print(temp.data + ((temp.next!= null) ? "->" :"null"));
+            temp = temp.next;
+        }
+    }
+    
+    public static void main(String[] args) {
+        int[] arr ={1,2,3,4,5};
+        Node head = convertArrayToLinkedlist(arr);
+        print(head);
+    }
+}

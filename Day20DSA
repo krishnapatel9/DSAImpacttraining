@@ -1,0 +1,119 @@
+Q:141 Linked list cycle
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        while(fast != null/*for odd*/ && fast.next!=null/*for even*/){
+            fast =fast.next.next;
+            slow=slow.next;
+            
+            if(fast==slow){
+                return true;
+            }
+        }
+        return false; 
+    }
+}
+
+
+------------->>>>Code<<<<-------------
+    static Node detectTheLoop(Node head){
+        Node fast = head;
+        Node slow = head;
+        while(fast != null/*for odd*/ && fast.next!=null/*for even*/){
+            fast =fast.next.next;
+            slow=slow.next;
+            
+            if(fast==slow){
+                return startingPointOfLoop(head,fast,slow);
+            }
+        }
+        return null;
+    }
+    static Node startingPointOfLoop(Node head, Node fast,Node slow){
+        slow=head;
+        while(fast!=slow){
+            fast=fast.next;
+            slow=slow.next;
+        }
+        return slow;
+    }
+    static int countingNodesInLoop(Node fast, Node slow,){
+        int c=0;
+        fast=fast.next;
+        while(fast!=slow){
+            fast=fast.next;
+            c++;
+        }
+        return c;
+    }
+    static Node deletingOfLoop(Node head, Node fast,Node slow){
+        slow=head.next;
+        while(fast!=slow){
+            fast=fast.next;
+            slow=slow.next;
+        }
+        fast.next=null;
+    }
+
+
+    static Node deleteNthNodeFrfomBack(Node head,int n){
+        Node fast = head;
+        Node slow = head;
+        for(int i=0;i<n;i++){
+            fast=fast.next;
+        }
+        while(fast.next!=null){
+            fast = fast.next;
+            slow = slow.next;
+        }
+        Node delete = slow.next;
+        slow.next = delete.next;
+        delete.next = null;
+        
+        return head;
+    }
+Q:328 oddevenlinkedlist
+
+
+    static Node oddAndEven(Node head){
+        Node temp = head;
+        Node oddStart   = null;
+        Node oddEnd     = null;
+        Node evenStart  = null;
+        Node evenEnd    = null;
+        
+        while(temp!=null){
+            if(temp.data%2==0){
+                if(evenStart == null){
+                    evenStart = temp;
+                    evenEnd = evenStart;
+                }
+                else{
+                    evenEnd.next = temp;
+                    evenEnd = null;
+                }
+            }
+            else{
+                if(oddStart==null){
+                   oddStart = temp;
+                   oddEnd = oddStart;
+                }
+                else{
+                   oddEnd.next = temp;
+                   oddEnd = temp;
+                }
+            }
+            temp=temp.next;
+        }
+        if(oddStart == null) return evenStart;
+        if(evenStart == null) return oddStart;
+        
+        
+        oddEnd.next=evenStart;
+        evenEnd.next=null;
+
+        return oddStart;
+    }
+    
+

@@ -18,8 +18,29 @@ class Solution {
     }
 }
 
+class Node{
+    int data;
+    Node next;
+    Node prev;
+    Node(int data1){
+        this.data=data;
+        this.next=null;
+        this.prev=null;
+    }
+    Node(int data1,Node back){
+        this.data=data;
+        this.next=null;
+        this.back=back1;
+    }
+    Node(int data,Node next1,Node back1){
+        this.data=data;
+        this.next=next1;
+        int back=back1;
+    }
+}
 
-//static Node deleteHead(Node head){
+class Main {
+    static Node deleteHead(Node head){
         Node temp=head;
         head=temp.next;
         head.prev=null;
@@ -27,6 +48,5 @@ class Solution {
         
         return head;
     }
-
 sorted,palindrome linkedlist 
 add 2 numbers,seggregate 0,1.

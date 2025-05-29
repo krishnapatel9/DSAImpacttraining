@@ -1,0 +1,32 @@
+Q:206 leetcode Reverse a linked list:
+
+take 3 pointers prev,current,temp
+swap like 3 variable  values in an array.
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode current=head;
+        ListNode prev=null;
+
+      while(current!=null){
+        ListNode temp=current.next;
+        current.next=prev;
+        prev=current;
+        current=temp;
+      }  
+      return prev;
+    }
+}
+
+
+//static Node deleteHead(Node head){
+        Node temp=head;
+        head=temp.next;
+        head.prev=null;
+        temp.next=null;
+        
+        return head;
+    }
+
+sorted,palindrome linkedlist 
+add 2 numbers,seggregate 0,1.

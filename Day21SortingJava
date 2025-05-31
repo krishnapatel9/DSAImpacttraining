@@ -1,0 +1,163 @@
+----->>>Sorting Techniques<<<-----
+Time Complexity
+                   Best             Average         Worst                 Remarks
+-->Bubble Sort     O(n)             O(n^2)          O(n^2)          Best case when array is already sorted
+-->Selection Sort  O(n^2)           O(n^2)          O(n^2)          T.C. doesnt depend on input always O(n^2)
+-->Insertion Sort  O(n)             O(n^2)          O(n^2)          Best for small or nearly sorted arrays
+-->Merge Sort      O(nlogn)         O(nlogn)        O(nlogn)        Always O(nlogn) regardless of input requires extra-space
+-->Quick Sort      O(nlogn)         O(nlogn)        O(n^2)          Worst cast when pivot selection is poor(eg:sorted/reverse sorted list)
+-->Count Sort
+-->Heap Sort
+-->Radix Sort
+
+int arr[]={5,3,4,2,1};
+Bubble Sort:
+-->Compare adjacent elements in pair and swap accordingly.
+-->Move greatest element at an end.
+
+procedure BubbleSort(array)
+    n ← length of array
+    repeat
+        swapped ← false
+        for i ← 0 to n - 2
+            if array[i] > array[i + 1] then
+                swap array[i] and array[i + 1]
+                swapped ← true
+        end for
+    until not swapped
+end procedure
+
+Selection Sort:
+-->selects an elementa and places at correct index.
+--.checks every element,is its sorted too
+-->repeatedly selects the minimum element from the unsorted portion,
+-->swaps it with the first unsorted element.
+
+for(int i=0;i<arr.length-1;i++){
+            min_Index=i;
+            for(int j=i+1;j<arr.length-1-i;j++){
+                if(arr[j]<arr[min_Index]){
+                    min_Index=j;
+                }
+            }
+
+procedure SelectionSort(array)
+    n ← length of array
+    for i ← 0 to n - 2
+        minIndex ← i
+        for j ← i + 1 to n - 1
+            if array[j] < array[minIndex] then
+                minIndex ← j
+        end for
+        if minIndex ≠ i then
+            swap array[i] and array[minIndex]
+    end for
+end procedure
+
+Stack and Queues:
+
+Stack
+-->linear data-structure
+-->LIFO(last in first out)
+-->output in constant time 
+-->Time complexity:O(n)
+
+Operations
+initially top=-1
+push():add an element,top+=1
+pop():remove an element,top-=1
+peek():top element,top
+isEmpty():has elements or not, if top == -1
+isFull():has space for an element, if top == size-1
+display():prints 
+size():length, top+1
+
+
+Code:
+import java.util.*;
+
+class Main {
+    static int push(int[] arr, int top, int ele) {
+        if (top < 4) { // max index is 4 for size 5 array
+            top += 1;
+            arr[top] = ele;
+        } else {
+            System.out.println("Stack is full");
+        }
+        return top;
+    }
+
+    static int pop(int[] arr, int top) {
+        if (top > -1) {
+            int val = arr[top];
+            top -= 1;
+            System.out.println("Popped: " + val);
+            return top;
+        } else {
+            System.out.println("Stack is empty");
+            return top;
+        }
+    }
+
+    static int peek(int[] arr, int top) {
+        if (top == -1) {
+            System.out.println("Stack is empty");
+            return -1;
+        } else {
+            return arr[top];
+        }
+    }
+
+    static boolean isEmpty(int top) {
+        return top == -1;
+    }
+
+    static int size(int top) {
+        return top + 1;
+    }
+
+    static void display(int[] arr, int top) {
+        System.out.print("Stack: ");
+        for (int i = 0; i <= top; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        int[] arr = new int[5];
+        int top = -1;
+
+        top = push(arr, top, 1);
+        top = push(arr, top, 2);
+        top = push(arr, top, 3);
+        display(arr, top);
+
+        top = pop(arr, top);
+        display(arr, top);
+
+        int topValue = peek(arr, top);
+        if (topValue != -1)
+            System.out.println("Top element is: " + topValue);
+    }
+}
+
+Queues:
+Linear data-structure
+FIFO(first in first out)
+
+Types: 
+1.single ended queue:open from 1 side only
+2.double ended queue:open from both sides
+3.priority queue:bias(min,max)
+-->solves heap problems 
+min:order of elements in queue will be arranged in ascending order.
+max:order of elements in queue will be arranged in descending order.
+Enqueue(offer):add element
+Dequeue(poll):remove element
+peek,deque
+
+5,3,2,1,4
+4,1,2,3,5
+min:5,4,3,2,1
+max:1,2,3,4,5

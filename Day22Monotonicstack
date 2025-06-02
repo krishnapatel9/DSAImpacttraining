@@ -1,0 +1,169 @@
+Queue:
+public class ArrayQueue {
+    private int front, rear, size;
+    private int capacity;
+    private int[] queue;
+
+    // Constructor
+    public ArrayQueue(int capacity) {
+        this.capacity = capacity;
+        queue = new int[capacity];
+        front = 0;
+        rear = -1;
+        size = 0;
+    }
+
+    // Enqueue operation
+    public void enqueue(int item) {
+        if (isFull()) {
+            System.out.println("Queue is full. Cannot enqueue " + item);
+            return;
+        }
+        rear = (rear + 1) % capacity;
+        queue[rear] = item;
+        size++;
+    }
+
+    // Dequeue operation
+    public int dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. Cannot dequeue.");
+            return -1;
+        }
+        int item = queue[front];
+        front = (front + 1) % capacity;
+        size--;
+        return item;
+    }
+
+    // Peek front element
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. Nothing to peek.");
+            return -1;
+        }
+        return queue[front];
+    }
+
+    // Check if queue is empty
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    // Check if queue is full
+    public boolean isFull() {
+        return size == capacity;
+    }
+
+    // Display the queue
+    public void display() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty.");
+            return;
+        }
+        System.out.print("Queue: ");
+        for (int i = 0; i < size; i++) {
+            System.out.print(queue[(front + i) % capacity] + " ");
+        }
+        System.out.println();
+    }
+
+    // Main method for testing
+    public static void main(String[] args) {
+        ArrayQueue q = new ArrayQueue(5);
+
+        q.enqueue(10);
+        q.enqueue(20);
+        q.enqueue(30);
+        q.display();  // Output: 10 20 30
+
+        System.out.println("Dequeued: " + q.dequeue()); // 10
+        q.display();  // Output: 20 30
+
+        System.out.println("Front element: " + q.peek()); // 20
+
+        q.enqueue(40);
+        q.enqueue(50);
+        q.enqueue(60); // Should succeed
+        q.enqueue(70); // Should show "Queue is full"
+        q.display();
+    }
+}
+
+Monotonic stack:
+either  strictly increasing or decreasing order for elements in stack.
+
+Next Greater Element using stack:
+will begin from end
+if top element > current element, we will consider
+else will return -1
+here time complexity will be O(n).
+
+initially when stack is empty : push an element(top) and return -1
+further compare top , current 
+if top < current :
+ pop;
+else :
+stack[top]==current
+
+
+pseudo code:
+function nextGreaterElement(arr):
+    n ← length of arr
+    result ← array of size n
+    stack ← empty stack
+
+    for i from n - 1 down to 0:
+        while stack is not empty AND stack.top() ≤ arr[i]:
+            stack.pop()
+
+        if stack is empty:
+            result[i] ← -1
+        else:
+            result[i] ← stack.top()
+
+        stack.push(arr[i])
+
+    return result
+
+import java.util.*;
+
+public class NextGreaterElement {
+    public static void printNGE(int[] arr) {
+        Stack<Integer> stack = new Stack<>();
+        int[] result = new int[arr.length];
+
+        // Traverse from right to left
+        for (int i = arr.length - 1; i >= 0; i--) {
+            // Pop smaller elements
+            while (!stack.isEmpty() && stack.peek() <= arr[i]) {
+                stack.pop();
+            }
+
+            // If stack is empty, no greater element
+            result[i] = stack.isEmpty() ? -1 : stack.peek();
+
+            // Push current element
+            stack.push(arr[i]);
+        }
+
+        // Output
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i] + " → " + result[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {4, 5, 2, 25};
+        printNGE(arr);
+    }
+}
+
+
+for circular queue:
+we will run loop from end 
+for(i=2n-1;i>=0;i--)
+ i=i%6
+
+
+

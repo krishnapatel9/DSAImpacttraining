@@ -81,23 +81,35 @@ No,Yes
 
 int sum =0;
 int place=1;
-while(n>0){
-  rem=n%2;
-  sum=sum+rem*place;
-  place=place*10;
-
-  n=n/2;
-}
-for(int i=0;i<bytecode.length;i++){
-   if (bytecode(i)==1):
-      return True
-   else:
-      return False
-}
 
 //set bit or not
+place 1 at i th index,so perform left shift
+n=21
+10101
+00100
+& operator (probability(getting 1)=1 and also > 0 )
+parallel of 1 to ith place by left shift, and perform & operation
+
+//left shift
 if ((n&(1<<i))==0):
    return False;
 else:
    return True;
+
+
+//right shift
+shift n to its right side i th times
+last bit & 00001 >0  return true
+if((n>>i)&1) !=0  return true
+
+convert ith bit as set bit
+strictly cant use right shift operator
+if ((n&(1<<i))==0):
+  i=1;
+
+i=2
+25=11001
+   00100 1<<i
+   11101
+s.o.p(n (1<<i))
 

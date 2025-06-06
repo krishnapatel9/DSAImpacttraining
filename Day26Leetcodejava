@@ -62,3 +62,29 @@ pop 1 return 2,3
 pop 2 return 4,5
 pop 3 return 6,7
 
+class BST{
+    public static void bfs(Node root){
+        if(root==null) return;
+        
+        Queue<Node>data=new LinkedList<>;
+        queue.offer(root);
+        
+        while(!data.isEmpty()){
+            Node cur=data.poll();
+            System.out.print(cur.data+" ");
+            
+            if(cur.left!=null) data.offer(cur.left);
+            if(cur.right!=null) data.offer(cur.right);
+        }
+    }
+}
+
+
+public void populate(Scanner sc){
+    System.out.println("Enter numbers to insert into BST (-1 to stop:");
+    while(true){
+        int value=sc.nextInt();
+        if(value==-1) break;
+        insert(value);
+    }
+}
